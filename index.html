@@ -101,7 +101,7 @@
       <nav class="tabs" aria-label="モックアップ案">
         <button type="button" class="active" data-plan="a">A案</button>
         <button type="button" data-plan="b">B案</button>
-        <button type="button" data-plan="c">C案（推奨）</button>
+        <button type="button" data-plan="c">C案</button>
       </nav>
       <div class="viewports" aria-label="表示幅">
         <button type="button" class="active" data-view="desktop">PC表示</button>
@@ -118,13 +118,13 @@
     <div class="stage">
       <iframe id="preview" src="a.html" title="A案のモックアップ"></iframe>
     </div>
-    <p class="notice">社内検討用のモックアップです。表示内容・料金は確定情報ではありません。</p>
+    <p class="notice">社内検討用のモックアップです。表示内容・料金は確定情報ではありません。モック内の詳細・相談等のボタンは未接続です。</p>
   </main>
   <script>
     const plans = {
       a: { title: 'A案｜目的から選ぶ', description: '目的別の絞り込みから、該当コースを比較する構成です。' },
       b: { title: 'B案｜標準コースと特化コースから選ぶ', description: '留学の基本形を先に示し、必要な人を専門コースへ案内する構成です。' },
-      c: { title: 'C案｜料金プランから比較する（推奨）', description: '料金を確認したい利用者の意図に合わせ、期間・費用の比較を入口にする構成です。' }
+      c: { title: 'C案｜料金プランから比較する', description: '料金を確認したい利用者の意図に合わせ、期間・費用の比較を入口にする構成です。' }
     };
     const preview = document.getElementById('preview');
     const openLink = document.getElementById('open-link');
