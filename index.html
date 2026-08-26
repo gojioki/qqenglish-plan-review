@@ -94,7 +94,7 @@
   <header>
     <p class="eyebrow">INTERNAL REVIEW MOCKUP</p>
     <h1>QQEnglish 料金プランページ案</h1>
-    <p class="lead">A・B・C・Dのタブを切り替えて、構成と導線を比較できます。</p>
+    <p class="lead">A・B・Cのタブを切り替えて、構成と導線を比較できます。</p>
   </header>
   <main>
     <div class="toolbar">
@@ -102,7 +102,6 @@
         <button type="button" class="active" data-plan="a">A案</button>
         <button type="button" data-plan="b">B案</button>
         <button type="button" data-plan="c">C案</button>
-        <button type="button" data-plan="d">D案</button>
       </nav>
       <div class="viewports" aria-label="表示幅">
         <button type="button" class="active" data-view="desktop">PC表示</button>
@@ -125,8 +124,7 @@
     const plans = {
       a: { title: 'A案｜目的から選ぶ', description: '目的別の絞り込みから、該当コースを比較する構成です。' },
       b: { title: 'B案｜標準コースと特化コースから選ぶ', description: '留学の基本形を先に示し、必要な人を専門コースへ案内する構成です。' },
-      c: { title: 'C案｜料金プランから比較する', description: '料金を確認したい利用者の意図に合わせ、期間・費用の比較を入口にする構成です。' },
-      d: { title: 'D案｜スマホでも一覧表で比較する', description: 'PCでは通常の一覧表、スマホでは項目を固定した横スクロール表でコースを比較する構成です。' }
+      c: { title: 'C案｜料金プランから比較する', description: '料金を確認したい利用者の意図に合わせ、期間・費用の比較を入口にする構成です。' }
     };
     const preview = document.getElementById('preview');
     const openLink = document.getElementById('open-link');
