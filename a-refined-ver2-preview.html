@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>A案 最終デザイン PC・スマホ確認</title>
+  <style>
+    :root { color-scheme: light; font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #eaf0f5; color: #14263a; }
+    .preview-bar {
+      position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
+      gap: 8px; min-height: 64px; padding: 10px 16px; background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #d8e1e9; box-shadow: 0 3px 15px rgba(20,38,58,.08);
+    }
+    .preview-label { margin-right: 12px; font-size: 14px; font-weight: 800; }
+    .preview-tab {
+      min-width: 112px; min-height: 42px; padding: 9px 16px; border: 1px solid #b9cad7; border-radius: 9px;
+      background: #fff; color: #28475f; font: inherit; font-size: 14px; font-weight: 800; cursor: pointer;
+    }
+    .preview-tab[aria-selected="true"] { border-color: #0875bd; background: #0875bd; color: #fff; }
+    .preview-stage { min-height: calc(100vh - 64px); padding: 26px; overflow: auto; }
+    .device {
+      width: 1180px; min-width: 1180px; margin: 0 auto; border-radius: 13px; overflow: hidden;
+      border: 1px solid #b9c7d2; background: #fff; box-shadow: 0 18px 45px rgba(26,52,72,.16);
+      transition: width .2s ease, min-width .2s ease;
+    }
+    .device[data-mode="mobile"] { width: 390px; min-width: 390px; border-radius: 24px; border-width: 7px; border-color: #273746; }
+    iframe { display: block; width: 100%; height: calc(100vh - 120px); min-height: 760px; border: 0; background: white; }
+    @media (max-width: 700px) {
+      .preview-bar { flex-wrap: wrap; }
+      .preview-label { width: 100%; margin: 0; text-align: center; font-size: 12px; }
+      .preview-stage { padding: 16px 8px; }
+      .device[data-mode="mobile"] { margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-bar">
+    <span class="preview-label">A案 最終デザイン 表示確認</span>
+    <button class="preview-tab" type="button" data-mode="desktop" aria-selected="true">PC表示</button>
+    <button class="preview-tab" type="button" data-mode="mobile" aria-selected="false">スマホ表示</button>
+  </div>
+  <main class="preview-stage">
+    <div class="device" data-device data-mode="desktop">
+      <iframe title="A案 最終デザイン"></iframe>
+    </div>
+  </main>
+  <script>
+    const device = document.querySelector('[data-device]');
+    const frame = document.querySelector('iframe');
+    fetch('a-refined-ver2.html?v=2')
+      .then((response) => response.text())
+      .then((html) => {
+        const source = new DOMParser().parseFromString(html, 'text/html')
+          .querySelector('iframe')?.getAttribute('srcdoc');
+        if (source) frame.srcdoc = source;
+      });
+    document.querySelectorAll('[data-mode]').forEach((button) => {
+      if (!button.matches('button')) return;
+      button.addEventListener('click', () => {
+        const mode = button.dataset.mode;
+        device.dataset.mode = mode;
+        document.querySelectorAll('.preview-tab').forEach((tab) => {
+          tab.setAttribute('aria-selected', String(tab === button));
+        });
+      });
+    });
+  </script>
+</body>
+</html>
